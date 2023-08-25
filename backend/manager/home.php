@@ -59,8 +59,8 @@ if ($conn->connect_error) {
                         <th>ID</th>
                         <th>Ảnh</th>
                         <th>Tên</th>
+                        <th>Mô tả ngắn</th>
                         <th>Nội dung</th>
-                        <th>Ngày đăng</th>
                         <th>trạng thái</th>
                         <th></th>
                     </tr>
