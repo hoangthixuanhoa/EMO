@@ -525,4 +525,24 @@ hr{
     color: #FAA5C4;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 50px;
+    margin-block: 10px;
+}
+#lib-container{
+    margin: 20px 70px;
+}
+#lib-conent{
+    display: flex;
+    overflow: auto;
+}
+.lib-news-content{
+    display: inline-block;
+    text-align: center;
+}
+.lib-news-content h3{
+    font-family: Dela-Gothic-One;
+    font-size: 30px;
+}
+.lib-news-content p{
+    font-family: quicksand;
+    font-size: 20px;
 }

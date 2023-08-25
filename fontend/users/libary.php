@@ -22,9 +22,9 @@
         <div id="qs-home">
             <h3 class="h3-viet" id="ask-home">Một chút năng lượng tích cực</h3>
         </div>
-        <div id=''>
+        <div id='lib-container'>
             <h3 class='text-lib'>Bài viết hay</h3>
-            <div>
+            <div id='lib-conent'>
                 <?php
                     $servername = "localhost";
                     $username = "emo";
@@ -39,7 +39,7 @@
                             $avatar = $row['avatars'];
                             $title = $row['title'];
                             $description = $row['description'];
-                            echo "<div><img src='../../uploads/",$avatar,"' height='200px'>";
+                            echo "<div class='lib-news-content'><img src='../../uploads/",$avatar,"' height='200px'>";
                             echo "<h3>",$title,"</h3>";
                             echo "<p>",$description,"</p></div>";
                         }
