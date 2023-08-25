@@ -30,7 +30,7 @@ if ($conn->connect_error) {
     <link rel="stylesheet" href="../css/style.css" />
     <script>
         function goChange(){
-            window.location.href = "change_journal.php?id=<?php echo $_GET['id'] ?>";
+            window.location.href = "library.php";
         }
     </script>
     <style>
@@ -43,19 +43,19 @@ if ($conn->connect_error) {
     <header>
         <div id="menu">
             <ul id="menu-ul">
-                <li><a class="menu-content" id="home" href="../users/home.php">Trang chủ</a></li>
-                <li><a class="menu-content" id="write" href="../users/viet.php">Viết</a></li>
-                <li><a class="menu-content" id="forest" href="emo_forest.php">Rừng</a></li>
+                <li><a class="menu-content" id="home" href="home.php">Trang chủ</a></li>
+                <li><a class="menu-content" id="write" href="viet.php">Viết</a></li>
+                <li><a class="menu-content" id="forest" href="../journals/emo_forest.php">Rừng</a></li>
                 <li><img id="logo" src="../img/logo.png"></li>
                 <li><a class="menu-content" id="garden" href="../journals/view_journal.php">Vườn</a></li>
-                <li><a class="menu-content" id="prf" href="../users/view_reply.php"><img id="img-user" src="../img/letter.png"></a></li>
+                <li><a class="menu-content" id="prf" href="../journals/view_reply.php"><img id="img-user" src="../img/letter.png"></a></li>
                 <li><a class="menu-content" id="prf" href="../accounts/profile.php"><img id="img-user" src="../img//user.png"></a></li>
             </ul>
         </div>
     </header>
     <main id="main-read">
-        <div><h3 id='div-content-read'>Đọc nhật kí</h3></div>
-        <div id="read-container">
+        <div><h3 id='div-content-read'>Bài viết</h3></div>
+        <div id="read-container" style='text-align:center'>
             <?php
                 $id=$_GET['id'];
                 $servername = "localhost";
@@ -69,7 +69,7 @@ if ($conn->connect_error) {
                 }
 
                 //$camxuc = $_SESSION['camxuc'];
-                $sql = "SELECT * FROM journals WHERE id='$id';";
+                $sql = "SELECT * FROM news WHERE id='$id';";
                 $result = $conn->query($sql);
                 if($result->num_rows>0)
                 {
@@ -77,37 +77,21 @@ if ($conn->connect_error) {
                         {
                             //Lấy dữ liệu từ cột trong dòng hiện tại
                             $id = $row['id'];
-                            $camxuc = $row['emotion'];
+                            $title = $row['title'];
                             $content = $row['content'];
-                            $chedo = $row['public'];
-                            $date = $row['date'];
-                            $month = $row['month'];
-                            $year = $row['year'];
+                            $description = $row['description'];
+                            $avatar = $row['avatars'];
                         }
-                    echo "<div><p class='info-read-p'>Ngày viết: ",$date,"/",$month,"/",$year,"</p></div>";
-                    if($camxuc=='1'){
-                        echo "<div id='camxuc-read'><p class='info-read-p'>Cảm xúc: </p><p class='info-read-p' id='vui-prf'>Vui</p></div>";
-                    }
-                    elseif($camxuc=='2'){
-                        echo "<div id='camxuc-read'><p class='info-read-p'>Cảm xúc: </p><p class='info-read-p' id='buon-prf''>Buồn</p></div>";
-                    }
-                    else{
-                        echo "<div id='camxuc-read'><p class='info-read-p'>Cảm xúc: </p><p class='info-read-p' id='khac-prf'>Khác</p></div>";
-                    }
-                    if ($chedo=='private'){
-                        echo "<div><p class='info-read-p'>Chế độ: Riêng tư</p></div>";
-                    }else{
-                        echo "<div><p class='info-read-p'>Chế độ: Công khai</p></div>";
-                    }
-                    
-                    echo "<div><p class='info-read-p'>Nội dung: ",$content, "</p></div>";
+                    echo "<div><h3 class='title-lib'>",$title,"</h3></div>";
+                    echo "<div><img src='../../uploads/",$avatar,"' style='max-width:1000px; max-height: 460px; text-align:center;'></div>";
+                    echo "<div><p class='info-read-p'>",$content, "</p></div>";
                 }else{
                     echo "Không có dữ liệu";
                 }
 
                 $conn->close();
             ?>
-            <div class="info-read"><button class="btn_ch" onclick="goChange()">Sửa</button></div>
+            <div class="info-read"><button class="btn_ch" onclick="goChange()">Quay lại</button></div>
         </div>
     </main>
 </body>
